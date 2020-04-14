@@ -13,9 +13,13 @@
   <div class="field">
     <%= f.text_field :name %>
   </div>
+  <div class="field mt-3">
+    <%= f.label "Correct: " %>
+    <%= f.check_box :correct, {checked: @answer.correct}  %>
+  </div>
   <div class="container col-7">
     <div class="actions mt-3">
-       <%= f.submit "Update Answer", class: "btn btn-default btn-primary btn-block" %>
+       <%= f.submit nil, class: 'btn btn-success'%>
     </div>
   </div>
 <% end %>
