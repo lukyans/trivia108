@@ -7,6 +7,10 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
+  def admin
+    @questions = Question.all
+  end
+
   # GET /questions/1
   # GET /questions/1.json
   def show
