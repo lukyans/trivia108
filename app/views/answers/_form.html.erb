@@ -10,16 +10,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.text_field :name %>
-  </div>
-  <div class="field mt-3">
-    <%= f.label "Correct: " %>
-    <%= f.check_box :correct, {checked: @answer.correct}  %>
-  </div>
-  <div class="container col-7">
-    <div class="actions mt-3">
-       <%= f.submit nil, class: 'btn btn-success'%>
+  <div class="container col-6 mt-5">
+    <div class="card text-center">
+      <div class="card-header h2">
+        <%= form_name %> Answer
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <div class="field">
+            <%= f.text_field :name %>
+          </div>
+        </h4>
+      </div>
+      <div class="field mt-3">
+        <%= f.label "Correct: " %>
+        <%= f.check_box :correct, {checked: @answer.correct}  %>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="actions">
+          <%= f.submit nil, class: 'btn btn-success'%>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
