@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
 
     if @answer.save
-      redirect_to(admin_questions_path, notice: 'Answer was successfully created.')
+      redirect_to(admin_questions_path, flash: {success: 'Answer was successfully created.'} )
     else
       render action: 'new'
     end
@@ -33,15 +33,18 @@ class AnswersController < ApplicationController
 
   # PUT questions/1/answers/1
   def update
-    answer = Answer.find params[:answer][:answer_id]
-    if answer.correct == true
-      current_user.points += 4
-    else
-      current_user.points -= 1
+    answer_id = params[:answer][:answer_id]
+    answer = Answer.where(id: answer_id)
+    unless answer.empty?
+      if answer.correct
+        current_user.points += 4
+      else
+        current_user.points -= 1
+      end
     end
     current_user.save
     if @answer.update_attributes(answer_params)
-      redirect_to(questions_path, notice: 'Answer was successfully updated.')
+      redirect_to(admin_questions_path, flash: {success: 'Answer was successfully updated.'})
     else
       render action: 'edit'
     end
