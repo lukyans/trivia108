@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'bootstrap', '~> 4.4.1'
 gem 'pry-rails'
+gem 'nested_scaffold'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
