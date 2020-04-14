@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-<div class="container col-6 mt-5">
-  <div class="card text-center">
-    <div class="card-header h2">
-      New Question
-    </div>
-    <div class="card-body">
-      <h4 class="card-title">
-        <div class="field">
-          <%= form.text_field :name %>
+  <div class="container col-6 mt-5">
+    <div class="card text-center">
+      <div class="card-header h2">
+        New Question
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">
+          <div class="field">
+            <%= form.text_field :name %>
+          </div>
+        </h4>
+      </div>
+      <div class="card-footer text-muted">
+        <div class="actions">
+          <%= form.submit nil, class: 'btn btn-success'%>
         </div>
-      </h4>
-    </div>
-    <div class="card-footer text-muted">
-      <div class="actions">
-        <%= form.submit %>
       </div>
     </div>
   </div>
-</div>
 <% end %>
