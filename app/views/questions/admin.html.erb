@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<div class="container col-6 mt-5">
+  <%= link_to new_question_path, class: "btn btn-success btn-block", style: "text-decoration: none" do %>
+    New Question
+  <% end %>
+</div>
+
+<% @questions.each do |question| %>
+  <div class="container col-8">
+    <div class="card text-left mt-5 mb-5">
+      <div class="card-header">
+        Created at <%= question.created_at.strftime("%B %d, %Y") %>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-9 text-left">
+            <h4 class="card-title">
+              <%= question.name %>
+            </h4>
+          </div>
+          <div class="col-3 text-right">
+            <%= link_to edit_question_path(question), class: "btn btn-primary", style: "text-decoration: none" do %>
+              Edit
+            <% end %>
+            <%= link_to question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", style: "text-decoration: none" do %>
+              Delete
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+      <% question.answers.each do |answer| %>
+        <div class="card-footer text-muted">
+          <div class="row">
+            <div class="col-6 text-left">
+              <%= answer.name %>
+            </div>
+            <div class="col-3 text-left">
+              <% if answer.correct %>
+                <span class="badge badge-pill badge-success">Correct</span>
+              <% end %>
+            </div>
+            <div class="col-3 text-right">
+              <%= link_to edit_question_answer_path(answer.question, answer), class: "btn btn-primary", style: "text-decoration: none" do %>
+                Edit
+              <% end %>
+              <%= link_to [answer.question, answer], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger", style: "text-decoration: none" do %>
+                Delete
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="card-footer text-muted">
+      <%= link_to new_question_answer_path(question.id), class: "btn btn-success", style: "text-decoration: none" do %>
+        Add Answer
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
