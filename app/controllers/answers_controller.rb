@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.build(answer_params)
 
     if @answer.save
-      redirect_to(questions_path, notice: 'Answer was successfully created.')
+      redirect_to(admin_questions_path, notice: 'Answer was successfully created.')
     else
       render action: 'new'
     end
@@ -51,7 +51,7 @@ class AnswersController < ApplicationController
   def destroy
     @answer.destroy
 
-    redirect_to questions_path
+    redirect_to admin_questions_path
   end
 
   private
