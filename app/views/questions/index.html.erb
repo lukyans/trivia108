@@ -1,0 +1,42 @@
+<!-- <% @questions.each do |question| %> -->
+  <!-- <% question.answers.each do |answer| %>
+    <% render 'answers/form', {:@answer => answer, form_name: "Edit"} %>
+  <% end %> -->
+<!-- <% end %> -->
+<%= form_for([@answer.question, @answer]) do |f| %>
+  <% if @answer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this @answer from being saved:</h2>
+      <ul>
+      <% @answer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= hidden_field_tag 'client_id', '1'  %>
+    <div class="container col-8">
+      <div class="card text-left mt-5 mb-5">
+        <div class="card-header">
+          Trivia 108 by <%= @question.user.email %>
+        </div>
+        <div class="card-body">
+          <h4 class="card-title"><%= @question.name %></h4>
+          <p class="card-text"></p>
+        </div>
+        <% @question.answers.each do |answer| %>
+          <div class="card-footer text-left text-muted">
+            <%= f.radio_button :answer_id, answer.id, checked: false %> <%= answer.name %>
+          </div>
+        <% end %>
+
+        <div class="card-footer text-muted">
+          <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+        </div>
+      </div>
+    </div>
+<% end %>
+<div class="container text-center h4">
+  Your score is: <b><%= current_user.points %></b>
+</div>
