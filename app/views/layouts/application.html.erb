@@ -4,7 +4,7 @@
     <title>Trivia108</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,9 +14,10 @@
     <%= render "/shared/nav" %>
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>">
-        <%= value %>
+        <%= value.html_safe %>
       </div>
     <% end %>
     <%= yield %>
+    <%= render "/shared/footer" %>
   </body>
 </html>
