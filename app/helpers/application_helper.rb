@@ -5,6 +5,7 @@ module ApplicationHelper
       when 'success' then "alert alert-success"
       when 'error' then "alert alert-danger"
       when 'alert' then "alert alert-warning"
+      when 'notice' then "alert alert-info"
       when 'email' then "alert alert-warning"
       when 'password' then "alert alert-warning"
     end
