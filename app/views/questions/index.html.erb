@@ -14,29 +14,28 @@
       </ul>
     </div>
   <% end %>
+  <div class="container col-8">
+    <div class="card text-left mt-3 mb-3">
+      <div class="card-header">
+        Created by <%= @question.user.email %>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title"><%= @question.name %></h4>
+        <p class="card-text"></p>
+      </div>
+      <% @question.answers.each do |answer| %>
+        <div class="card-footer text-left text-muted">
+          <%= f.radio_button :answer_id, answer.id, checked: false %> <%= answer.name %>
+        </div>
+      <% end %>
 
-    <%= hidden_field_tag 'client_id', '1'  %>
-    <div class="container col-8">
-      <div class="card text-left mt-5 mb-5">
-        <div class="card-header">
-          Trivia 108 by <%= @question.user.email %>
-        </div>
-        <div class="card-body">
-          <h4 class="card-title"><%= @question.name %></h4>
-          <p class="card-text"></p>
-        </div>
-        <% @question.answers.each do |answer| %>
-          <div class="card-footer text-left text-muted">
-            <%= f.radio_button :answer_id, answer.id, checked: false %> <%= answer.name %>
-          </div>
-        <% end %>
-
-        <div class="card-footer text-muted">
-          <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-        </div>
+      <div class="card-footer text-muted">
+        <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
       </div>
     </div>
+  </div>
 <% end %>
-<div class="container text-center h4">
+
+<div class="container text-center h4 mt-0">
   Your score is: <b><%= current_user.points %></b>
 </div>
