@@ -25,8 +25,11 @@
   </a>
 </div>
 
-<div class="container mt-3 col-4 text-center">
+<div class="container mt-4 mb-4 col-4 text-center">
   <%= link_to questions_path, class: "btn btn-success btn-lg btn-block", style: "text-decoration: none;color:white" do%>
     Play the Game
   <% end %>
 </div>
+
+<%=render partial: "average" %>
+<%=render partial: "table" %>
