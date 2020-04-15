@@ -1,10 +1,15 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
   def index
     @questions = Question.all
+    @question = @questions.sample
+    if !user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 
   def admin
