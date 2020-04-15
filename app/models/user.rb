@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
  has_many :questions, dependent: :destroy
+
+ def self.average_score
+   scores = self.pluck(:points)
+   scores.reduce(:+) / scores.size
+ end
 end
